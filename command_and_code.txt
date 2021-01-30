@@ -1,0 +1,18 @@
+#### Git
+
+git init
+
+```
+git config --global user.name "user_name"
+```
+
+```
+git config --global user.email "email_id"
+```
+
+#### Django
+
+django-admin.py startproject project_name
+
+
+
