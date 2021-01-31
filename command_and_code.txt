@@ -10,9 +10,19 @@ git config --global user.name "user_name"
 git config --global user.email "email_id"
 ```
 
+git add .
+
+git commit -m "message"
+
+
+
 #### Django
 
 django-admin.py startproject project_name
+
+python manage.py runserver <your_machines_ip_address>:5555
+
+python manage.py runserver 0.0.0.0:5555
 
 
 
