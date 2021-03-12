@@ -18,7 +18,7 @@ git remote add origin https://github.com/pjr2020/test.git
 git branch -M main
 git push -u origin main
 
-
+git push origin master
 
 #### Django
 
