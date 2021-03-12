@@ -1,0 +1,113 @@
+### Everything is an object
+
+places to store data: registers, the stack, the heap(for objects), constant storage, non-RAM storage(streamed objects, persistent objects)
+
+![image-20210127220856573](C:\Users\JP\AppData\Roaming\Typora\typora-user-images\image-20210127220856573.png)
+
+"This size invariance is one reason Java programs are more portable than programs in most other languages."
+
+All numeric types are signed
+
+ BigInteger or BigDecimal
+
+##### Array
+
+ A Java array is guaranteed to be initialized and cannot be accessed outside of its range.
+
+When you create an array of objects, you are really creating an array of references, and each
+of those references is automatically initialized to a special value with its own keyword: null.
+
+##### no need to destroy an object
+
+#### Class
+
+fields and methods
+
+library names like com.xxx.xx.xxxx
+
+static fields and methods, isolated from objects
+
+for standalone programs, one of the classes in the file must have the same name as the file
+
+Javadoc to create documents for libraries
+
+/**   class, method or field comment   */
+
+camel-using: class AllTheColorsOfTheRainbow, int anIntegerRepresentingColors; void changeTheHueOfTheColor(int newHue)
+
+### Operators
+
+assignment for objects is only manipulating the reference: alias
+
+also happens while passing an object to a method
+
+random object to create random numbers
+
+==/!= compares references for objects, equals() compares contents
+
+n1.equals(n2) for Wrapper types to compare references
+
+If you shift a char, byte, or short, it will be promoted to int before the shift takes place, and
+the result will be an int.
+
+Strings support + and +=
+
+"" + i convert into String
+
+automatically casting
+
+truncation with automatic conversion, round() for rounding
+
+any mathematical or bitwise operations on primitive data types that are smaller than an int (that is, char, byte, or short) will convert them into int
+
+overflow can still happen
+
+### Controlling Execution
+
+if else
+
+while do while for
+
+Foreach syntax for(float x : f)==for x in f (f must be iterable)
+
+profiler a tool measures performance of code
+
+### Initialization & Cleanup
+
+constructer: same name with the class
+
+method overload: same method name with different parameters
+
+this keyword: a.peel(1); == Banana.peel(a, 1); produce the reference of the object that the method has been called for in non-static methods
+
+ it’s often used in return statements when you want to return the reference to the current object:
+
+return this;
+
+Apple getPeeled() { return Peeler.peel(this); }
+
+Flower(String s, int petals) { this(petals); } this can also be used to call different constructors, but you cannot call two constructors in a time
+
+this.s to specify the field in the object
+
+finalize( ) to destruct an object
+
+1. Your objects might not get garbage collected.
+2. Garbage collection is not destruction.
+3. Garbage collection is only about memory.
+
+If the JVM isn’t close to running out of memory, then it might not waste time recovering memory through
+garbage collection.
+
+the garbage collector can have a significant impact on increasing the speed of object creation
+
+JDK hotspot: optimize a piece of code each time it's executed, so that the more it's executed, the faster it will be
+
+the order of initialization is determined by the order that the variables are defined within the class
+
+fields are initialized with default values at first, then maybe reinitialized by the constructor
+
+ static initialization occurs only if it’s necessary. After that, the static objects are not reinitialized.
+
+
+

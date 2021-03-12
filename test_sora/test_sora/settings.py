@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'test1.apps.Test1Config',
+    'test2.apps.Test2Config',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

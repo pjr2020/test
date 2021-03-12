@@ -1,0 +1,95 @@
+### Structure and design
+
+#### system architecture diagram 
+
+![image-20210130162802599](C:\Users\JP\AppData\Roaming\Typora\typora-user-images\image-20210130162802599.png)
+
+![image-20210130163150422](C:\Users\JP\AppData\Roaming\Typora\typora-user-images\image-20210130163150422.png)
+
+#### Wireframes
+
+![image-20210130173540562](C:\Users\JP\AppData\Roaming\Typora\typora-user-images\image-20210130173540562.png)
+
+#### Pages and URL Mappings
+
+URL mapping as the text a user will have to enter into a browser’s address bar to reach the
+given page
+
+#### Entity-Relationship Diagram
+
+![image-20210130174300259](C:\Users\JP\AppData\Roaming\Typora\typora-user-images\image-20210130174300259.png)
+
+#### Model definition
+
+use Django ModelField types to define the type of each field
+
+![image-20210131084434592](C:\Users\JP\AppData\Roaming\Typora\typora-user-images\image-20210131084434592.png)
+
+
+
+### Starting with Django
+
+Startapp
+
+add the new app in installed apps
+
+write a view that returns a HttpResponse object
+
+map a URL to the view
+
+create models to define database layout and additional metadata
+
+Each model has a number of class variables, each of which represents a database field in the model. 
+
+Each field is represented by an instance of a [`Field`](https://docs.djangoproject.com/en/3.1/ref/models/fields/#django.db.models.Field) class – e.g., [`CharField`](https://docs.djangoproject.com/en/3.1/ref/models/fields/#django.db.models.CharField) for character fields and [`DateTimeField`](https://docs.djangoproject.com/en/3.1/ref/models/fields/#django.db.models.DateTimeField) for datetimes. This tells Django what type of data each field holds.
+
+Field names will be used by the database as column names
+
+field requirements like [`max_length`](https://docs.djangoproject.com/en/3.1/ref/models/fields/#django.db.models.CharField.max_length) are used not only in the database schema, but in validation, as we’ll soon see.
+
+relationship is defined, using [`ForeignKey`](https://docs.djangoproject.com/en/3.1/ref/models/fields/#django.db.models.ForeignKey)
+
+Migrations are how Django stores changes to your models(and thus your database schema)
+
+in model changing
+
+- Change your models (in `models.py`).
+- Run [`python manage.py makemigrations`](https://docs.djangoproject.com/en/3.1/ref/django-admin/#django-admin-makemigrations) to create migrations for those changes
+- Run [`python manage.py migrate`](https://docs.djangoproject.com/en/3.1/ref/django-admin/#django-admin-migrate) to apply those changes to the database.
+
+A view is a “type” of Web page in your Django application that generally serves a specific function and has a specific template.
+
+```
+path('<int:question_id>/', views.detail, name='detail')
+```
+
+to pass parameters to the view
+
+Each view is responsible for doing one of two things: returning an [`HttpResponse`](https://docs.djangoproject.com/en/3.1/ref/request-response/#django.http.HttpResponse) object containing the content for the requested page, or raising an exception such as [`Http404`](https://docs.djangoproject.com/en/3.1/topics/http/views/#django.http.Http404). 
+
+Django’s template system to separate the design from Python by creating a template that the view can use
+
+Your project’s [`TEMPLATES`](https://docs.djangoproject.com/en/3.1/ref/settings/#std:setting-TEMPLATES) setting describes how Django will load and render templates. 
+
+```html
+"{% url 'detail' question.id %}"
+```
+
+to get url from urls.py in the app
+
+```
+app_name = 'polls'
+```
+
+to set the application namespace and use namespace in templates to avoid same names in different apps
+
+"{% url 'test1:detail' question.id %}"
+
+Whenever you create a form that alters data server-side, use `method="post"`
+
+all POST forms that are targeted at internal URLs should use the [`{% csrf_token %}`](https://docs.djangoproject.com/en/3.1/ref/templates/builtins/#std:templatetag-csrf_token) template tag.
+
+Http Redirect  prevents users from being posted twice if the user hits back button
+
+simplify the code using ListView/DetailView and as_view()
+
